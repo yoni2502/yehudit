@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dan Hotel Project - Maya&Yehudit</title>
+     <link rel="stylesheet" href="includes/bootstrap.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <meta charset="utf-8" />
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>    
+    <link rel="stylesheet" type="text/css" href="includes/style.css" />   
+</head>
+
+        <header><a href="index.html" id="logo"></a></header>
+    <ul class="nav nav-pills">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">חדר אוכל</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">ספא וברכה</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">אירועים ופעילויות</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#">שירות חדרים</a>
+  </li>
+</ul>
+<body>
+
+    <div id="pageOtherOptions">
+        
+
+
+        <main>  
+            <h1> אפשרויות נוספות</h1>
+        </main>                
+    </div>
+    
+    
+    
+    <script language="javascript">
+         function addOptionToDom(obj) {
+             var $optionLine = $("<article class='otherOption " + obj.area + "'></article>");
+             if (obj.area == 'pool') {
+                 $optionLine.append("<B>איזור הבריכה:</B> התפנו " + obj.chairs.length + " כסאות<BR>");
+                 var chairsStr = '';
+                 for (var i = 0; i < obj.chairs.length; i++) {
+                     chairsStr += obj.chairs[i];
+                     if (i != obj.chairs.length - 1)
+                         chairsStr += ', ';
+                 }
+                 $optionLine.append("מספרי הכיסאות: " + chairsStr + "<BR>");
+             } else if (obj.area == 'spa') {
+                 $optionLine.append("<b>ספא: </b> בואו להתפנק בעיסוי זוגי במבצע מיוחד<BR>");
+                 $optionLine.append("סוג טיפול: " + obj.massageType + " עם + " + obj.massagerName + "<BR>");
+                 $optionLine.append("מחיר מבצע: " + obj.price + "₪" + "<BR>");
+             } else if (obj.area == 'event') {
+                 $optionLine.append("<B>פעילויות ואירועים: <BR>");
+                 $optionLine.append("תיאור הפעילות: " + obj.desc + "<BR>");
+                 $optionLine.append("שעת יציאה: " + obj.time + "<BR>");
+                 $optionLine.append("מספר מקומות פנויים: " + obj.availablePlace + "<BR>");
+                 $optionLine.append("עלות: " + obj.price + "<BR>");
+             }
+             
+             var $accept = $("<div class='acceptOption'><button>אישור</button></div>");
+             $optionLine.append($accept);
+
+             $("main").append($optionLine);
+         }
+
+         function loadData() {
+             var pool1 = {
+                 area: 'pool',
+                 chairs: [22, 23, 24, 25]
+             }
+             var pool2 = {
+                 area: 'pool',
+                 chairs: [17, 18]
+             }
+             var pool3 = {
+                 area: 'pool',
+                 chairs: [20, 21,22]
+             }
+             var spa1 = {
+                 area: 'spa',
+                 price: '300',
+                 massagerName: 'מאיר לוי',
+                 massageType: 'עיסוי שוודי'
+             }
+             var spa2 = {
+                 area: 'spa',
+                 price: '600',
+                 massagerName: 'גלית בירן',
+                 massageType: 'אבנים חמות'
+             }
+             
+               var spa3 = {
+                 area: 'spa',
+                 price: '650',
+                 massagerName: 'אלן קורן',
+                  massageType: 'טיפול רפלקסולוגי'
+             }
+             var event1 = {
+                 area: 'event',
+                 availablePlace: 2,
+                 time: '21:30',
+                 desc: 'ערב טעימות יין בזכרון יעקב',
+                 price: '250'
+             }
+             var event2 = {
+                 area: 'event',
+                 availablePlace: 'כניסה חופשית',
+                 time: '10:30',
+                 desc: 'מתנפחים לילדים בבריכה',
+                 price: 'חינם'
+             }
+             
+              var event3 = {
+                 area: 'event',
+                 availablePlace: 'כניסה חופשית',
+                 time: '14:00',
+                 desc: 'הרצאה בנושא נומרולוגיה',
+                 price: '50'
+             }
+             var data = [];
+             data.push(pool1);
+             data.push(event1);
+             data.push(spa1);
+             data.push(pool2);
+             data.push(event2);
+             data.push(spa2);
+             data.push(pool3);
+             data.push(event3);
+             data.push(spa3);
+             
+
+
+             for (i = 0; i < data.length; i++) {
+                 addOptionToDom(data[i]);
+             }            
+         }
+
+         $("document").ready(function () {
+             loadData();
+         })
+    </script>
+    
+    
+  
+    
+       <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script> 
+
+
+ 
+</body>
+
+</html>
