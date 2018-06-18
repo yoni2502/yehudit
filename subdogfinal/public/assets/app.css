@@ -1,0 +1,36 @@
+.container {
+    width: 60%;
+    margin: 0 auto;
+}
+
+h2, p, div {
+    font-family: 'Roboto', sans-serif;
+}
+
+.form {
+    display: block;
+    margin-bottom: 12px;
+}
+
+.input-container {
+    display: block;
+}
+
+.responseContainer {
+    border: 1px solid gainsboro;
+    background: whitesmoke;
+    position: relative;
+    display: none;
+}
+
+.responseContainer .close{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+}
+
+.responseContainer .content {
+    max-height: 450px;
+    overflow-y: scroll;
+}
