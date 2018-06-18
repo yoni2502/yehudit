@@ -21,5 +21,5 @@ mongoose.connect('mongodb://db_user:mayayehudit1@ds247330.mlab.com:47330/subdog_
 
 app.all('*', (req,res) => res.sendFile(`${publicPath}/index.html`));
 
-const port = 5001;
-app.listen(port,() => console.log(`Server listening to: ${port}`));
+const PORT = process.env.PORT || 5001;
+app.listen(PORT,() => console.log(`Server listening to: ${PORT}`));
